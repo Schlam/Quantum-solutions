@@ -1,0 +1,304 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Quantum HW1}
+\author{Samuel Bellenchia}
+\date{February 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Wave Function Push-ups}
+%\begin{multicols}{2}
+\subsection*{1a}
+
+%quick int; \int_{-\infty}^{\infty}=[infint]
+
+$1={\displaystyle \int_{-\infty}^{\infty} }|Nxe^{-\alpha x}|^2dx$\\
+
+$=N^2{\displaystyle \int_{0}^{\infty} }x^2e^{-2\alpha x}dx$\\
+
+Integration by parts;\\
+
+$=N^2(-\frac{x^2e^{-2\alpha x}}{2\alpha}|_0^{\infty}+\int_{-\infty}^{0}\frac{xe^{-2\alpha x}}{2\alpha}dx) $ \\
+
+$=N^2(-\frac{x^2e^{-2\alpha x}}{2\alpha}|_0^{\infty}-\frac{xe^{-2\alpha x}}{2\alpha^2}+\int_{0}^{\infty}\frac{e^{-2\alpha x}}{2\alpha}) $ \\
+
+$=N^2(-\frac{x^2e^{-2\alpha x}}{2\alpha}|_0^{\infty}-\frac{xe^{-2\alpha x}}{2\alpha^2}|_0^{\infty}-frac{e^{-2\alpha x}}{4\alpha^3}|_0^{\infty}) $ \\
+
+$=-\frac{N^2}{4\alpha^3}[\lim\limits_{x\rightarrow\infty}(\frac{2x^2}{e^{2\alpha x}}+\frac{2x^2}{e^{2\alpha x}}+\frac{2x}{e^{2\alpha x}}+\frac{1}{e^{2\alpha x}})-(\frac{0}{e^{2\alpha 0}}+\frac{0}{e^{-2\alpha 0}}+\frac{1}{e^{2\alpha 0}})]$\\
+
+L'Hopitals Rule;\\
+
+$=\frac{-N^2}{4\alpha^3}(-1)\Rightarrow N^2=4\alpha^3$\\
+
+$\Leftrightarrow N=2\alpha^{3/2}$\\
+
+\subsection*{1b}
+
+Is at maximum when the derivative equals zero\\
+
+$\frac{d\psi}{dx}=Ne^{-\alpha x}(1-\alpha x)=0$\\
+
+$\Leftrightarrow 1-\alpha x=0\Rightarrow x=1/\alpha$\\
+
+\subsection*{1c}
+
+$<\hat{x}>=\int_{-\infty}^{\infty}\psi^*(x)x\psi(x)dx$\\
+
+$=\int_{-\infty}^{\infty}N^2x^3e^{-2\alpha x}$\\
+
+We use integration by parts to evluate this integral;\\
+
+$=N(-\frac{x^3}{2\alpha e^{2\alpha x}}-\frac{3x^2}{4\alpha^2 e^{2\alpha x}}-\frac{6x}{8\alpha^3 e^{2\alpha x}}-\frac{6}{16\alpha^4 e^{2\alpha x}})|_0^\infty$\\
+
+Using L'Hopitals Rule to evaluate the limits as $x\rightarrow\infty$\\
+
+$=N[(-0-0-0-0)-(-0-0-0-\frac{6}{16\alpha^4})]$
+
+Using our value $N=2\alpha^{3/2}$ we get \\
+
+$<\hat{x}>=\frac{6N^2}{16\alpha^4}=\frac{3}{2\alpha}$\\
+
+\subsection*{1d}
+
+$<\hat{x}^2>=\int_{-\infty}^{\infty}x^2|\psi(x)|^2dx$\\
+
+$=\int_{-\infty}^{\infty}N^2x^4e^{-2\alpha x}$\\
+
+We use integration by parts to evluate this integral;\\
+
+$=N(-\frac{x^4}{2\alpha e^{2\alpha x}}-\frac{4x^3}{4\alpha^2 e^{2\alpha x}}-\frac{12x^2}{8\alpha^3 e^{2\alpha x}}-\frac{24x}{16\alpha^4 e^{2\alpha x}}-\frac{24}{32\alpha^5 e^{2\alpha x}})|_0^\infty$\\
+
+Using L'Hopitals Rule to evaluate the limits as $x\rightarrow\infty$\\
+
+$=N[(-0-0-0-0)-(-0-0-0-\frac{24}{32\alpha^5})]$
+
+Using our value $N=2\alpha^{3/2}$ we get \\
+
+$<\hat{x}^2>=\frac{24N^2}{32\alpha^5}=\frac{3}{\alpha^2}$\\
+
+\subsection*{1e}
+
+$\sigma_x=<x^2>-<x>^2$\\
+
+$=\frac{3}{\alpha^2}-(\frac{3}{2\alpha})^2$\\
+
+$\Rightarrow\sigma_x^2=\frac{3}{4\alpha^2}$\\
+
+\subsection*{1f}
+
+$<\hat{p}>=\int_{-\infty}^{\infty}\psi^*(-i\hbar\frac{d\psi}{dx})dx$\\
+
+%$=\int_{-\infty}^{\infty}-i\hbar$\\
+
+$=\int_{-\infty}^{\infty}i\hbar N^2e^{-2\alpha x}(\alpha x^2-x)dx$\\
+
+We repeat the process from our previous steps to evaluate this integral;\\
+
+$<p>=i\hbar N^2(\frac{2\alpha}{8\alpha^3}-\frac{1}{4\alpha^2})=0$\\
+
+\subsection*{1g}
+
+$<\hat{p}^2>=\int_{-\infty}^{\infty}\psi^*(-i\hbar\frac{d}{dx})^2\psi dx$\\
+
+
+$=\int_{-\infty}^{\infty}Nxe^{-\alpha x}(-i\hbar\frac{d}{dx}(i\hbar Ne^{-\alpha x}(\alpha x-1)))dx$\\
+
+$=\int_{-\infty}^{\infty}N^2\hbar^2e^{-2\alpha x}(2\alpha x-\alpha^2x^2)dx$\\
+
+$=N^2\hbar^2[2\alpha(\frac{-x}{2\alpha e^{2\alpha x}}-\frac{1}{4\alpha^2 e^{2\alpha x}})-\alpha^2(\frac{-x^2}{2\alpha e^{2\alpha x}}-\frac{2x}{4\alpha^2 e^{2\alpha x}}-\frac{2}{8\alpha^3 e^{2\alpha x}})]|_0^\infty$\\
+
+$=(\frac{N^2\hbar^2}{2\alpha}-\frac{N^2\hbar^2\alpha^2}{4\alpha^3})=\frac{N^2\hbar^2}{4\alpha}$\\
+
+We now plug in N to get our final result;\\
+
+$\Rightarrow<\hat{p}^2>=\hbar^2\alpha^2$\\
+
+\subsection*{1h}
+
+$\sigma_p=<p^2>-<p>^2$\\
+
+$=\hbar^2\alpha^2-0$\\
+
+$\Rightarrow\sigma_p^2=\hbar^2\alpha^2$\\
+
+\subsection*{1i}
+
+To verify Heisenburg's uncertainty princliple, we take the product of our two results' square roots;\\
+
+$\sigma_x\sigma_p=\sqrt{\frac{3}{4\alpha^2}}\sqrt{\hbar^2\alpha^2}=\frac{\sqrt{3}\hbar}{2}$\\
+
+Thus, it does in fact agree with the uncertainty principle.\\
+%
+%
+%
+%
+%
+%
+%
+%
+\section*{Momentum Space}
+\subsection*{2a}
+
+Using the Fourier Transform, we can change our basis so that we're in momentum space.
+
+$\phi(p)=\frac{1}{\sqrt{2\pi\hbar}}{\displaystyle \int_{-\infty}^{\infty} } Nxe^{-\alpha x}e^{-ipx/\hbar}dx$\\
+
+$\phi(p)=\frac{1}{\sqrt{2\pi\hbar}}{\displaystyle \int_{-\infty}^{\infty} }Nxe^{-x(\alpha+ip/\hbar)}dx$\\
+
+$\phi(p)=\frac{1}{\sqrt{2\pi\hbar}}[\frac{-xe^{-x(\alpha+ip/\hbar)}}{(\alpha+ip/\hbar)}-\frac{e^{-x(\alpha+ip/\hbar)}}{(\alpha+ip/\hbar)^2}]|_0^\infty$\\
+
+$\phi(p)=\frac{1}{\sqrt{2\pi\hbar}}(0-0-(-0-\frac{1}{(\alpha+ip/\hbar)^2}))$\\
+
+$\Rightarrow \phi(p)=\frac{N}{\sqrt{2\pi\hbar}(\alpha+ip/\hbar)^2}$\\
+
+\subsection*{2b}
+
+To normalize this, we first bring our imaginary unit into the numerator;\\
+
+$\phi(p)=(\frac{N}{\sqrt{2\pi\hbar}})^2\frac{1}{\alpha^2+2ip\alpha/\hbar-p^2/\hbar^2}\frac{\alpha^2-2ip\alpha/\hbar-p^2/\hbar^2}{\alpha^2-2ip\alpha/\hbar+p^2/\hbar^2}=\frac{N^2}{2\pi\hbar}\frac{\alpha^2-2ip\alpha/\hbar-p^2/\hbar^2}{\alpha^4+4p^2\alpha^2/\hbar^2+p^4/\hbar^4}$\\
+
+It's easy to see that multiplying by the conjugate again simply yields;\\
+
+$1=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} }\frac{\alpha^4+2p^2\alpha^2/\hbar^2+p^4/\hbar^4}{(\alpha^4+2p^2\alpha^2/\hbar^2+p^4/\hbar^4)^2}=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} }\frac{1}{\alpha^4+2p^2\alpha^2/\hbar^2+p^4/\hbar^4}$\\
+
+We simplify this expression for a special purpose (stay tuned to find out why!);\\ 
+
+$1=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} } \frac{1}{(p^2/\hbar^2+\alpha^2)^2}dp=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} } \frac{\hbar^4}{(p^2+\alpha^2\hbar^2)^2}dp=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} } \frac{\hbar^4}{(p-i\alpha\hbar)^2(p+i\alpha\hbar)^2}dp$\\
+\linebreak
+%We can manipulate this equation
+%
+%$1=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} %}\frac{1}{(p/\hbar-i\alpha)^2(p/\hbar+i\alpha)^2}$\\
+Cauchy's Residue Theorem states that if we have a function $f(z)$ which is complex analytic on a domain $D$ enclosed by some contour $\gamma$, the enclosement integral is equal to $2\pi i$ times the sum of its Residues on $D$\\
+
+${\displaystyle \oint_\gamma }f(z)dz=2\pi i\sum_{i=0}^{2} Res_{z=z_i}(f(z_i))$\\
+
+In order to enclose both residues and also have our path along the real line, we chose $\gamma=\gamma_1+\gamma_2$ such that \\
+
+${\displaystyle \oint_{\gamma_1}}={\displaystyle \int_{[-R,R]}}+{\displaystyle \int_{C_1}}$, and ${\displaystyle \oint_{\gamma_2}}={\displaystyle \int_{[-R,R]}}+{\displaystyle \int_{C_2}}$\\
+
+Where $C_1$ and $C_2$ are the following parameterized curves;\\
+
+$C_1=Re^{i\theta},0<\theta<\pi$ and $C_2=Re^{-i\theta},0<\theta<\pi$
+%$1=2\pi i[\frac{-2}{(-2i\alpha)^3}+\frac{-2}{(2i\alpha)^3}]$\\
+
+Notice the two curves have opposite orientations, and when adding the residues we negate the latter.\\
+
+$2\pi i\sum Res=2\pi i(\frac{d}{dp}[\frac{1}{(p+i\alpha\hbar)^2}]_{p=i\alpha\hbar}-\frac{d}{dp}[\frac{1}{(p-i\alpha\hbar)^2}]_{p=-i\alpha\hbar})$\\
+
+$=2\pi i[\frac{-2}{(-2i\alpha)^3}-\frac{-2}{(2i\alpha)^3}]=\frac{\pi}{\alpha^4\hbar^4}$\\
+
+Let us quickly show that the two curve's go to zero. First, by the triangle inequality (we apply it twice, breaking the polynomial each time) we see;\\
+
+$|p^4+2\alpha^2\hbar^2p^2+\alpha^4\hbar^4|\geq|p^4+2\alpha^2\hbar^2p^2|+|\alpha^4\hbar^4|$\\
+
+$|p^4|+|2\alpha^2\hbar^2p^2|+|\alpha^4\hbar^4|\geq R^4+2R^2\alpha^2\hbar^2+\alpha^4\hbar^4$\\
+
+Using this, we can say the maximum value our function takes on this curve is less than the integration limit;\\
+
+${max}_{p\in C}|\phi(p)|\leq\frac{1}{R^4+2R^2\alpha^2\hbar^2+\alpha^4\hbar^4}$\\
+
+Finally, we can show by the arc length estimate that the two contour integrals $C_1$ and $C_2$ go to zero as $R\rightarrow\infty$\\
+
+$|{\displaystyle\int_{C}}\phi(p)dp|\leq length(C)({max}_{p\in C})\leq\frac{\pi R}{R^4+2R^2\alpha^2\hbar^2+\alpha^4\hbar^4}$\\
+
+$\Rightarrow \lim\limits_{R\rightarrow\infty}|{\displaystyle\int_{C}}\phi(p)dp|\rightarrow0$\\
+
+Taking this limit means we have $\lim\limits_{R\rightarrow\infty}2{\displaystyle \int_{[-R,R]}}\phi(p)dp=\frac{\pi}{\alpha^4\hbar^4}$
+
+Finally, back to our original equation;\\
+
+$1=\frac{N^2\hbar^4}{2\pi\hbar}\frac{\pi}{2\alpha^3\hbar^3}=\frac{N^2}{4\alpha^3}$\\
+
+$\Rightarrow N^2=4\alpha^3\Longrightarrow N=2\alpha^{3/2}$
+
+\subsection*{2c}
+
+We seek to find the expectation value by relation $<p>={\displaystyle \int_{-\infty}^{\infty} }\phi^*(p) p \phi(p) dp$\\
+
+For brevity, we will use the same method as above without the rigorous proof of our claims and their applicability.\\ 
+
+$<p>=\frac{N^2}{2\pi\hbar}{\displaystyle \int_{-\infty}^{\infty} }\frac{p\hbar^4}{\alpha^4+2p^2\alpha^2/\hbar^2+p^4/\hbar^4}=\frac{N^2\hbar^3}{2\pi}{\displaystyle \int_{-\infty}^{\infty}}\frac{p}{(p+i\alpha\hbar)^2(p-i\alpha\hbar)^2}$\\
+
+$=2\pi i\frac{1}{2}[\frac{d}{dp}[\frac{p}{(p+i\alpha\hbar)^2}]_{p=i\alpha\hbar}-\frac{d}{dp}[\frac{p}{(p-i\alpha\hbar)^2}]_{p=-i\alpha\hbar}]$\\
+
+$=\pi i[\frac{-4\alpha^2\hbar^2+4\alpha^2\hbar^2}{16\alpha^4\hbar^4}-\frac{-4\alpha^2\hbar^2+4\alpha^2\hbar^2}{16\alpha^4\hbar^4}]=0$\\
+
+Thus our expectation value for momentum is zero, just as we found before transforming our wave funtion to momentum space.\\
+
+\section*{Complex Absorbing Potentials}
+\subsection*{3a}
+
+For the standard Schroedinginger equation, we have $\frac{d}{dt}{\displaystyle \int_{-\infty}^{\infty}}dx|\Psi(x,t)|^2=0$\\
+
+We now solve the equation using the "Gobbler" $V(x)=V_0(x)-i\Gamma$, assume our solution is seperable; as in $\Psi=\psi(x)\phi(t)$\\
+
+$i\hbar\frac{d}{dt}\psi\phi=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi\phi+(V_0(x)-i\Gamma)\psi\phi$\\
+
+We divide both sides by $\psi(x)\phi(t)$ and rearrage to arrive at the following;\\
+
+$i\hbar\frac{\phi"}{\phi}+\frac{\hbar^2}{2m}\frac{\psi''}{\psi}=V_0(x)-i\Gamma$\\
+
+Since $V_0(x)$ is a function purely of x, we know our time dependant portion of the equation is equal to the latter term, giving us the following Ordinary Differential Equation;\\
+
+$-i\hbar\frac{\phi'(t)}{\phi(t)}=i\Gamma$\\
+$\phi'(t)=-\frac{\Gamma}{\hbar}\phi(t)$\\
+
+Integrating this equation gives us the following result;\\
+
+$\phi(t)=Const. e^{-t\Gamma/\hbar}$\\
+
+Let us write $P={\displaystyle \int_{-\infty}^{\infty}}dx|\Psi(x,t)|^2$\\
+
+Which means $\frac{d}{dt}{\displaystyle \int_{-\infty}^{\infty}}dx|\Psi(x,t)|^2=\frac{d}{dt}e^{-2t\Gamma/\hbar}{\displaystyle \int_{-\infty}^{\infty}}|Const.|^2|\psi(x)|^2dx$\\
+
+$\Rightarrow \frac{dP}{dt}=\frac{-2\Gamma}{\hbar}P$\\
+
+\subsection*{3b}
+
+Solving for $P(t)$ simply means evaluating the differential equation we formed above;\\
+
+$\frac{dP}{dt}=\frac{-2\Gamma}{\hbar}P\Rightarrow {\displaystyle\int}\frac{dP}{P}={\displaystyle\int}\frac{-2i\Gamma}{\hbar}dt$\\
+
+$ln|P|=-2t\Gamma/\hbar+C$ Exponentiating both sides, we get\\
+
+$P=Const*e^{-2t\Gamma/\hbar}$\\
+
+Finding the lifetime of the particle simply means finding the value of $t$ which yields a value of $P=\frac{1}{e}$\\
+This value is $t=\frac{\hbar}{2\Gamma}$\\
+
+
+\section*{Normlization and Orthogonality}
+\subsection*{4a}
+Given a wavefuntion $\phi(x)=af(x)+bg(x)$ where $f(x)$ and $g(x)$ are orthonormal, normalizing the wavefunction yeilds;\\
+
+%Let us assume that each of the complex constants $a$ and $b$ can be represented in the folloing forms; \\
+
+%$a=u+iv$ and $b=p+iq$
+
+$1={\displaystyle \int_{-\infty}^\infty}\phi^*(x)\phi(x)dx$\\
+
+$=(|a|^2<f|f>+|b|^2<g|g>+a^*b<f|g>+b^*a<g|f>)$\\
+
+$1=|a|^2+|b|^2$\\
+
+\subsection*{4b}
+
+Now, we deal with orthogonal functions which are not normalized; such that their overlap is given by ${\displaystyle \int_{-\infty}^\infty}f^*gdx=S$
+
+$1=(|a|^2<f|f>+|b|^2<g|g>+a^*b<f|g>+b^*a<g|f>)$\\
+
+$=(|a|^2+|b|^2+(a^*b)S+(b^*a)S)$\\
+
+$=|a|^2+|b|^2+2(Re(a)Re(b)+Im(a)Im(b))$
+
+Note that the later terms are the real and imaginary parts of a and b, respectively.
+
+\section*{Quantum Cascade Lasers}
+
+Damn bro what the actual fuck is this. You gotta stop sleeping through class dog, you're obviously behind becuase of your drug addict mentality. Step up your game young bloodddd\\
+
+
+\end{document}
