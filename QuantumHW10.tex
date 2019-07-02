@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{braket}
+\usepackage{parskip}
+\usepackage{wrapfig}
+\usepackage{xparse,mathtools}
+
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\renewcommand{\baselinestretch}{1.2}
+\title{Quantum HW10}
+\author{bellenchia}
+\date{May 2019}
+\begin{document}
+\maketitle
+
+\section*{16.) Quantum or Classical Mechanics?}\textit{De'Broglie wavelength}; $\lambda=\frac{h}{p}$ is the spacial frequency of a massive particle.\\ Matter exhibits both wavelike and corpuscular behavior, although the former's effects are confined to the nanoscale. Let's apply the wavelength formula for systems of ranging size.\\\textbf{We wish to find the ratio $x/\lambda$ for the following systems}\\
+
+\textbf{a)}  The moon is confined to a path $x=2\pi R_m$. The number of days it takes for the moon to orbit us is the orbital frequency $T$. We use this to find the average velocity, giving us\\
+
+$v_m=\frac{2\pi R_m}{T}$. Using the moon's mass $m_m$, we then have $p_m=m_mv_m=\frac{2\pi R_mm_m}{T}$. \\
+
+The spacial frequency is then $\lambda=\frac{h}{2\pi R_mm_m/T}$ and our ratio;  $x/\lambda=\frac{4\pi^2R_m^2m_m}{hT}\approx2.76*10^{65}$\\
+
+Rather than fill up several pages with procedural explanation/calculation done on Mathematica, I've just made my Mathematica notebook somewhat readable and attached it, the following pages contain the rest of exercise 16, and exercise 34 as well;\\
+
+I go through great effort to spare you from my Parkinson's-like handwriting!
+
+
+\section*{35.) Langevin Reactions}
+
+In this problem, a proton combines with a hydrogen atom (an electron and a proton) where the positively charged particles are aligned along $\hat{z}$, (atom points to proton in positive direction.) By \textit{Coulomb's Law} we know these are the additional forces we must consider;\\
+
+$\vec{F}_{++}=\frac{1}{4\pi\epsilon}{|+e||+e|}{|\vec{r}_{++}|^2}\hat{r}_{++}$\\
+
+$\vec{F}_{+-}=\frac{1}{4\pi\epsilon_0}{|+e||-e|}{|\vec{r}_{+-}|^2}\hat{r}_{+-}$\\
+
+\textbf{a)} Neglecting kinetic energy, our Hamiltonian for this perturbed system $\hat{H}=\hat{H}_0+\lambda\hat{H}^{'}$ can be analytically derived by knowing $\hat{H}_0$, and computing $V_\pm(x,y,z)=-{\displaystyle\int}\vec{F}_{\pm}\cdot d\vec{r}_{\pm} $\\
+
+In order to do so, we must define our vectors $\vec{r}_{++}$ and $\vec{r}_{+}$.\\
+We are given that $\vec{r}_{++}=0\hat{x}+0\hat{y}+R\hat{z}$, so our potential for the proton-proton interaction is;\\
+
+$V_{++}(z)=-{\displaystyle\int}\frac{e^2}{4\pi\epsilon_0}\frac{1}{R}=\frac{e^2}{4\pi\epsilon_0}\frac{1}{R}$\\
+
+We know that the electron "orbits" the proton at some small (Bohr) radius $a_0$, so define the parameters $x_e$, $y_e$, and $z_e$ such that $a_0^2=x_e^2+y_e^2+z_e^2$. Since it is orbiting a proton a distance $R$ away from the outside $+e$, it's norm can be written as  $|\vec{r}_{+-}|=x_e+y_e+(R-z_e)$.\\
+%when rewritten as $x_e^2+y_e^2+z_e^2+(R^2-2Rz)$ we can substitute in $a_0^2$ to find;\\
+%$|\vec{r}_{+-}|=\sqrt{a_0^2+(R^2+2Rz)}$,since we assume $R>>a_0$ we get $|\vec{r}_{+-}|\approx\sqrt{R^2+2Rz}$\\
+
+We're told $R>>a_0$, and this assumption tells us, by small angle approximation, that $\hat{r}_{+-}$ is also along the $+\hat{z}$ direction. This means we can approximate $x_e$,$y_e\approx0$; Giving us;\\
+
+$V_{+-}(z)=-{\displaystyle\int}\frac{e^2}{4\pi\epsilon_0}\frac{1}{|\vec{r}_{+-}|}\hat{r}_{+-}\cdot d^3\vec{r}_{+-}=\frac{-e^2}{4\pi\epsilon_0}\frac{1}{R-z}$\\
+
+\textbf{a quick note;}\\
+Some of my peers insisted on the approximation method of instead finding $|\vec{r}_{+-}|^2$ and then substituting in $a_0^2$ to find $a_0^2+(R^2-2Rz)\approx(R^2-2Rz)\Rightarrow|\vec{r}_{+-}|=\sqrt{R^2-2Rz}$. This yeilds a potential of $V_{+-}=\frac{-e^2}{4\pi\epsilon_0}\frac{1}{\sqrt{R^2-2Rz}}$. Although this does take care of one issue (assuming $R>>a_0$ should also mean z goes to zero, but we make the assumption $z\approx0$ when finding series expansion) it requires further approximation schemes to arrive at the necessary Hamiltonian;\textbf{ end note}\\
+
+Now, we have a correction to the Hamiltonian of the form; $\hat{H}^{'}=\frac{e^2}{4\pi\epsilon_0}\frac{1}{R}-\frac{e^2}{4\pi\epsilon_0}\frac{1}{R-z}$\\
+
+The series expansion of $\frac{1}{R-z}$ about $z\approx0$ gives us; $\frac{1}{R-z}=\frac{1}{R}+\frac{z}{R^2}+...$, only keeping the first two terms; $\frac{1}{R-z}\approx\frac{1}{R}+{z}{R^2}$, then by plugging into $H^{'}$ we get;\\
+
+$\hat{H}^{'}=\frac{e^2}{4\pi\epsilon_0}\frac{1}{R^2}-\frac{e^2}{4\pi\epsilon_0}\frac{1}{R-z}=\frac{e^2}{4\pi\epsilon_0}(\frac{1}{R}-[\frac{1}{R}+\frac{z}{R^2}])=-\frac{e^2}{4\pi\epsilon_0}\frac{z}{R^2}$\\
+%thus showing; it can be written in the desired form $-\frac{1}{4\pi\epsilon_0}\frac{z}{R^2}$ if we chose $\lambda=e^2$\\
+
+\textbf{b) } Our formulas from perturbation theory tell us the first order corrections to the systems energy is $E^1_n=\braket{\psi^0_n|\hat{H}^{'}|\psi_n^0}$.\\
+
+The unperturbed system's ground state is; $\psi_{100}=R_{10}(r)Y^0_0(\theta$,$\phi)=\frac{1}{\sqrt{\pi a^3}}e^{-r/a}$\\ 
+
+%Note that this orbital has no angular dependency, which means $\theta=0$. For our system, we convert to cyllindrical by the simple substitution $z=r\text{cos}\theta$, and in order to chance our bounds we 
+
+$\braket{\psi_{100}|\hat{H}^{'}|\psi_{100}}=\frac{-e^2}{4\pi\epsilon_0R^2}\frac{1}{\sqrt{\pi a_0^3}}\braket{e^{-r/a}|z|e^{-r/a}}$, converting to spherical;\\
+
+$={\displaystyle\int_0^\infty}r^3dr{\displaystyle\int_0^{\pi}}\text{sin}\theta\text{cos}\theta d\theta{\displaystyle\int_0^{2\pi}}d\phi$, now evaluating the angular component;\\
+
+${\displaystyle\int_0^\pi}sin\theta cos\theta d\theta=[-cos^2\theta]|_0^\pi=[-(-1)^2+(1)^2]=0\Rightarrow E_1^1=0$\\
+
+Next, we use the formula for second order correction; $E_n^2=\sum_{m\neq n}^\infty\frac{|\braket{\psi^0_{m}|\hat{H}^{'}|\psi^0_n}|^2}{E_n^0-E_m^0}$\\
+
+Rewriting the expectation value; $|\braket{\psi^0_{m}|\hat{H}^{'}|\psi^0_n}|^2=|\frac{-e^2}{4\pi\epsilon_0R^2}|^2|\braket{\psi^0_{m}|z|\psi^0_n}|^2=\frac{e^4}{16\pi^2\epsilon_0^2R^4}|\braket{\psi^0_{m}|z|\psi^0_n}|^2$\\
+
+$\Rightarrow E_n^2=\frac{1}{R^4}(\frac{e^2}{4\pi\epsilon_0})^2\sum_{m\neq n}^\infty\frac{|\braket{\psi^0_{m}|z|\psi^0_n}|^2}{E_n^0-E_m^0}$, now considering that $E_n^0=\frac{E_1}{n^2}$ where $E_1\approx-13.6eV$\\
+
+The ground state correction can thus be written as  $E_1^2=\frac{-1}{R^4}(\frac{e}{4\pi\epsilon_0})^2\sum_{m=2}^\infty\frac{|\braket{\psi^0_{m}|z|\psi^0_1}|^2}{13.6eV(1-1/m^2)}$\\
+
+Since $\forall m\in\mathbb{Z}$,$(m\geq2)$ we have $0<(1-1/m^2)$, we can write; $E_1^2=-\frac{C}{R^4}$ for some positive $C$\\
+
+Finally, we have shown the interaction energy between the proton and our Hydrogen atom is proportional to $\frac{1}{R^4}$ plus the addition of higher order terms.\\
+
+\pagebreak
+
+\textbf{c) }First we approximate; $m\neq1\Rightarrow E_1-E_m\approx E_1$ so we have $C=(\frac{e}{4\pi\epsilon_0})^2\frac{1}{13.6eV}\sum_{m\neq1}^\infty|\braket{\psi^0_{m}|z|\psi^0_1}|^2$. \\
+
+To simplify, consider the identities $|\braket{\psi_{m}|z|\psi_1}|^2=\braket{\psi_1|z|\psi_m}\braket{\psi_m|z|\psi_1}$ and $\braket{\psi_m|\psi_m}=1$\\
+
+Grouping together the m'th terms; $\bra{\psi_1}z(\bra{\psi_m}\ket{\psi_m})z\ket{\psi_1}=\braket{\psi_{100}|z^2|\psi_{100}}=\braket{\psi_{100}|r^2\text{cos}^2\theta|\psi_{100}}$\\
+
+So we have $C=(\frac{e^2}{4\pi\epsilon_0})^2\frac{1}{13.6eV}\sum_{m\neq1}^\infty\braket{\psi_{100}|z^2|\psi_{100}}=(\frac{e}{4\pi\epsilon_0})^2\frac{1}{13.6eV}\braket{\psi_{100}|z^2|\psi_{100}}$, integrating;\\
+
+$C=(\frac{e}{4\pi\epsilon_0})^2\frac{1}{13.6eV}\frac{1}{\pi a_0^3}[({\displaystyle\int_0^\infty}r^4e^{-2r/a_0}dr)({\displaystyle\int_0^\pi}cos^2\theta sin\theta d\theta)({\displaystyle\int_0^{2\pi}}d\phi)]$.\\
+
+Using the following property;
+${\displaystyle\int_0^\infty}x^nexp(-\alpha x)dx=\frac{n^1}{\alpha^{n+1}}$\\
+
+$\Rightarrow C=(\frac{e^2}{4\pi\epsilon_0})^2\frac{1}{13.6eV}\frac{1}{\pi a_0^3}[(\frac{24}{(2/a_0)^5})(\frac{2}{3})(2\pi)]=(\frac{e^2}{4\pi\epsilon_0})^2\frac{1}{13.6eV}\frac{1}{\pi a_0^3}[\pi a_0^5]=(\frac{e^2}{4\pi\epsilon_0})^2\frac{a_0^2}{13.6eV}$\\
+
+Finally, our constant is $C=(\frac{e^2}{4\pi\epsilon_0})^2\frac{a_0^2}{|E_1|}$. We could further plug in $E_1$ and $a_0^2$ to simplify;\\
+
+$|E_1|=[\frac{m}{2\hbar^2}(\frac{e^2}{4\pi\epsilon_0})^2]$ and $a_0\equiv\frac{4\pi\epsilon_0\hbar^2}{me^2}\approx5.29*10^{-11}$, but for compactness' I'll leave it :)
+\end{document}
